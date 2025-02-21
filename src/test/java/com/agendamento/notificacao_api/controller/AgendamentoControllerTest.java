@@ -57,7 +57,7 @@ public class AgendamentoControllerTest {
 
     @Test
     void deveCriarAgendamentoComSucesso() throws Exception {
-        when(agendamentoService.gravarAgendamento(agendamento)).thenReturn(agendamentoRecordOut);
+        when(service.gravarAgendamento(agendamento)).thenReturn(agendamentoRecordOut);
 
         mockMvc.perform(post("/agendamento")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -70,7 +70,7 @@ public class AgendamentoControllerTest {
                 .andExpect(jsonPath("$.dataHoraEnvio").value("02-01-2025 11:01:01"))
                 .andExpect(jsonPath("$.statusNotificacao").value("AGENDADO"));
 
-        verify(agendamentoService, times(1)).gravarAgendamento(agendamento);
+        verify(service, times(1)).gravarAgendamento(agendamento);
 
     }
 }
